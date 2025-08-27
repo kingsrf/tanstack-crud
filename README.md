@@ -1,50 +1,51 @@
-# Welcome to your Expo app 👋
+# React Native (Expo) CRUD App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+I built this project to learn and demonstrate how to manage server state in a mobile app. It's a basic application that performs all the main CRUD (Create, Read, Update, Delete) operations using TanStack Query. For the backend, I used the free JSONPlaceholder API to practice with some fake data.
 
-## Get started
+## What I Implemented
 
-1. Install dependencies
+Here are the main features I built into the app:
 
-   ```bash
-   npm install
-   ```
+    Fetch Posts: I started by fetching a list of posts from the API and showing them on the screen.
 
-2. Start the app
+    Filter Posts: I added a way for users to filter the posts by their user ID.
 
-   ```bash
-   npx expo start
-   ```
+    Create Post: I included a form so you can submit a new post.
 
-In the output, you'll find options to open the app in a
+    Update Post (PUT): I added an edit option to completely replace a post with new information.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+    Patch Post (PATCH): I also made a way to update just one part of a post, like its title.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+    Delete Post: Finally, I added a button to delete a post.
 
-## Get a fresh project
+What I Used
 
-When you're ready, run:
+These are the main technologies and libraries I used to put this together:
 
-```bash
-npm run reset-project
-```
+    React Native (Expo): I used this to build the mobile app itself.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+    TypeScript: I wrote the code in TypeScript to help catch errors and keep things organized.
 
-## Learn more
+    TanStack Query: This was the key library I used for handling all the data fetching and state management.
 
-To learn more about developing your project with Expo, look at the following resources:
+    Expo Router: I used this for setting up the screens and navigation in the app.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+    JSONPlaceholder: This is the fake online API I used to practice making requests.
 
-## Join the community
+How to Run It
 
-Join our community of developers creating universal apps.
+    Node.js installed on your computer.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+    The Expo Go app on your phone (or a simulator on your computer).
+
+    Clone the project:
+      git clone <your-repository-url>
+      cd <your-project-directory>
+
+   Install the dependencies:
+      npm install
+
+   Start the server:
+
+   npx expo start -c 
+      -  ('-c' flag, tells Expo to clear the bundler cache before starting up.)
