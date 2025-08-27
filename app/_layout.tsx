@@ -5,13 +5,10 @@ const queryClient = new QueryClient();
 
 export default function RootLayout() {
   return (
-
     <QueryClientProvider client={queryClient}>
-      
       <Stack>
         <Stack.Screen name="index" options={{ title: 'Posts Feed' }} />
       </Stack>
-
     </QueryClientProvider>
   );
 }

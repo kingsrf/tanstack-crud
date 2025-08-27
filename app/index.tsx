@@ -14,13 +14,10 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { fetchPosts, createPost, updatePost, patchPostTitle, deletePost, Post } from '../lib/api'; 
 
 export default function HomeScreen() {
-  // STATE FOR FORMS
   const queryClient = useQueryClient();
   const [userIdFilter, setUserIdFilter] = useState('');
   const [newPostTitle, setNewPostTitle] = useState('');
   const [newPostBody, setNewPostBody] = useState('');
-
-  // TANSTACK QUERY HOOKS
 
   const {
     data: posts,
@@ -32,7 +29,6 @@ export default function HomeScreen() {
     queryFn: () => fetchPosts(userIdFilter || null),
   });
   
-  // Generic mutation hook for handling success and error
   const usePostMutation = (mutationFn: (...args: any[]) => Promise<any>) => {
     return useMutation({
       mutationFn,
@@ -47,16 +43,10 @@ export default function HomeScreen() {
   };
 
   const createPostMutation = usePostMutation(createPost);
-
   const updatePostMutation = usePostMutation(updatePost);
-
   const patchPostMutation = usePostMutation(patchPostTitle);
-
   const deletePostMutation = usePostMutation(deletePost);
 
-
-  // EVENT HANDLERS 
-  
   const handleCreatePost = () => {
     if (!newPostTitle.trim() || !newPostBody.trim()) {
       Alert.alert('Validation Error', 'Title and body cannot be empty.');
@@ -88,13 +78,11 @@ export default function HomeScreen() {
     deletePostMutation.mutate(postId);
   };
 
-  // JSX TO RENDER 
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.header}>TanStack Query CRUD 🚀</Text>
 
-        {/* FORM */}
         <View style={styles.formContainer}>
           <Text style={styles.subHeader}>📝 Create a New Post</Text>
           <TextInput
@@ -112,7 +100,6 @@ export default function HomeScreen() {
           <Button title="Create Post" onPress={handleCreatePost} disabled={createPostMutation.isPending} />
         </View>
 
-        {/* FILTER */}
         <View style={styles.filterContainer}>
           <Text style={styles.subHeader}>🔍 Filter Posts by User ID</Text>
           <TextInput
@@ -124,7 +111,6 @@ export default function HomeScreen() {
           />
         </View>
 
-        {/* POSTS LIST */}
         {isLoading && <ActivityIndicator size="large" color="#0000ff" />}
         {isError && <Text style={styles.errorText}>Error: {error.message}</Text>}
         
@@ -144,7 +130,6 @@ export default function HomeScreen() {
   );
 }
 
-// STYLES
 const styles = StyleSheet.create({
   safeArea: { flex: 1 },
   container: { padding: 20, paddingBottom: 50 },

@@ -7,7 +7,6 @@ export interface Post {
   body: string;
 }
 
-// Fetch all posts or filter by userId
 export const fetchPosts = async (userId: string | null): Promise<Post[]> => {
   const url = userId ? `${API_URL}/posts?userId=${userId}` : `${API_URL}/posts`;
   const response = await fetch(url);
@@ -17,7 +16,6 @@ export const fetchPosts = async (userId: string | null): Promise<Post[]> => {
   return response.json();
 };
 
-// Create a new post
 export const createPost = async (newPost: { title: string; body: string; userId: number }): Promise<Post> => {
   const response = await fetch(`${API_URL}/posts`, {
     method: 'POST',
@@ -32,7 +30,6 @@ export const createPost = async (newPost: { title: string; body: string; userId:
   return response.json();
 };
 
-// Update an existing post
 export const updatePost = async (updatedPost: Post): Promise<Post> => {
   const response = await fetch(`${API_URL}/posts/${updatedPost.id}`, {
     method: 'PUT',
@@ -47,7 +44,6 @@ export const updatePost = async (updatedPost: Post): Promise<Post> => {
   return response.json();
 };
 
-// Partially update an existing post's title
 export const patchPostTitle = async ({ id, title }: { id: number; title: string }): Promise<Post> => {
   const response = await fetch(`${API_URL}/posts/${id}`, {
     method: 'PATCH',
@@ -62,7 +58,6 @@ export const patchPostTitle = async ({ id, title }: { id: number; title: string 
   return response.json();
 };
 
-// Delete a post
 export const deletePost = async (postId: number): Promise<object> => {
   const response = await fetch(`${API_URL}/posts/${postId}`, {
     method: 'DELETE',
